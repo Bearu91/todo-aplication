@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Todo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ toDo.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ toDo.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('todo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('todo_edit', { 'id': toDo.id }) }}">Edit</a>
+        </li>
+        
+    </ul>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- Main content -->
+    <section class="content">
+  
+      <div class="row">
+        <div class="col-md-5">
+          <a href="{{ path('todo_new') }}" >
+             <button type="button" style="width:100px" class="btn btn-block btn-success">Dodaj nowy</button>
+            </a>
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">ToDo List</h3>
+              
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table table-condensed">
+                <tbody><tr>
+                  <th>Nazwa</th>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                </tr>
+                {% for toDo in toDos %}
+                    <tr>
+                        <td>{{ toDo.name }}</td>
+                        <td>
+                            <a href="{{ path('todo_edit', { 'id': toDo.id }) }}">
+                               <button type="button" class="btn btn-block btn-primary">Edycja</button>
+                             </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('todo_delete', { 'id': toDo.id }) }}">
+                               <button type="button" class="btn btn-block btn-danger">Usuń</button>
+                             </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <a href="{{ path('fos_user_security_logout') }}">
+            <button type="button"  style="width:100px" class="btn btn-block btn-warning">Wyloguj</button>
+       </a>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        
+        </div>
+      </div>
+      
+    </section>
+    <!-- /.content -->
+
+    <ul>
+        <li>
+            <a href="{{ path('todo_new') }}">Create a new toDo</a>
+        </li>
+    </ul>
+{% endblock %}

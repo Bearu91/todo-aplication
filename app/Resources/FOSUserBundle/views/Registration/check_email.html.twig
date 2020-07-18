@@ -1,0 +1,14 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% redirect confirmationUrl, 301 %}
+<h4 class="text-xs-center">REJESTRACJA</h4>
+    <center>
+		  <span>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</span>
+      <p>
+        <a href="/login">Przejdź do strony logowania</a>
+      </p>
+	</center>
+{% endblock fos_user_content %}

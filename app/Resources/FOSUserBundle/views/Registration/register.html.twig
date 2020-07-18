@@ -1,0 +1,55 @@
+
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% form_theme form _self %}
+
+	{% block form_widget_simple %}
+	{% spaceless %}
+		{% if type is not defined %}
+			{% set type = type|default('text') %}
+		{% endif %}
+		<div class="form-group has-feedback">
+			<input type="{{ type }}" class="form-control"  {{ block('widget_attributes') }} {%if value is defined %} {% if value is not empty %}value="{{ value }}" {% endif %} {% endif %}>
+      </div>
+	{% endspaceless %}
+	{% endblock form_widget_simple %}
+
+	{% block hidden_widget %}
+	{% spaceless %}
+		{% set type = type|default('hidden') %}
+		<input type="hidden" {{ block('widget_attributes') }} {%if value is defined %} {% if value is not empty %}value="{{ value }}" {% endif %} {% endif %}>
+	{% endspaceless %}
+	{% endblock hidden_widget %}
+
+{% block fos_user_content %}
+
+	<div class="register-box">
+		<div class="register-logo">
+			<a href="../../index2.html"><b>ToDo List</b></a>
+		</div>
+
+		<div class="register-box-body">
+			<p class="login-box-msg">Rejestracja nowego użytkownika</p>
+
+	{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+	{{ form_widget(form.username, { 'attr': {'placeholder': 'Nazwa użytkownika'} }) }}
+	{{ form_errors(form.username) }}
+	
+	{{ form_widget(form.email, { 'attr': {'placeholder': 'E-mail'} }) }}
+	{{ form_errors(form.email) }}
+	
+	{{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Hasło', 'type':  'password'} } ) }}
+	{{ form_errors(form.plainPassword.first) }}
+
+	{{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Powtórz hasło', 'type': 'password'}}) }}
+    {{ form_errors(form.plainPassword.second) }}
+
+	<br>
+    <center>
+		   <button type="submit" class="btn btn-primary btn-block btn-flat">Rejestracja</button>
+	  </center>
+  {{ form_end(form) }}
+</div>
+</div>
+{% endblock fos_user_content %}

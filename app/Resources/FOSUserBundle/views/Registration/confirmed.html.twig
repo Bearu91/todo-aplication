@@ -1,0 +1,11 @@
+{% extends "@FOSUser/layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+    <center>
+		  <span>Konto zostało zarejestrowane!</span>
+      <br>
+      <p><br>
+        <a href="{{ path("homepage") }}">Przejdź do serwisu</a>
+      </p>
+	</center>
+{% endblock fos_user_content %}

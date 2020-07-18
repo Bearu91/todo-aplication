@@ -1,0 +1,40 @@
+{% extends "@FOSUser/layout.html.twig" %}
+{% block fos_user_content %}
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>ToDo List</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Zaloguj się poniżej.</p>
+
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" id="username" name="_username" required="required" placeholder="Nazwa użytkownika">
+        <span class="form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Hasło">
+        <span class="form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <!-- /.col -->
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Zaloguj</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+    <br>
+    <center><a href="{{ path('fos_user_registration_register') }}" class="text-center">Rejestracja nowego użytkownika</a></center>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+{% endblock fos_user_content %}
